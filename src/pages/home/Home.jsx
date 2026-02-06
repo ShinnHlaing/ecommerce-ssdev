@@ -8,11 +8,11 @@ export default function Home({ cart }) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/products")
-            .then((response) => {
-                setProducts(response.data);
-                //console.log(response.data);
-            })
+        const getHomeData = async () => {
+            const response = await axios.get("/api/products")
+            setProducts(response.data);
+        }
+        getHomeData();
     }, []); // Empty dependency array means this runs once on component mount
 
     return (
