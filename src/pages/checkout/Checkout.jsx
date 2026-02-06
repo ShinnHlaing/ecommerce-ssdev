@@ -20,6 +20,7 @@ export function Checkout({ cart }) {
                 setPaymentSummary(response.data);
             })
     }, [])// Empty dependency array means this runs once on component mount
+
     return (
         <>
             <title>Checkout</title>

@@ -15,8 +15,6 @@ export default function Home({ cart }) {
             })
     }, []); // Empty dependency array means this runs once on component mount
 
-
-
     return (
         <>
             <title>Ecommerce Project</title>

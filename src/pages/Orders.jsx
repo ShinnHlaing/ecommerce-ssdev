@@ -2,11 +2,11 @@ import { Link } from "react-router";
 import "./Orders.css"
 import { Header } from "../components/Header";
 
-export function Orders() {
+export function Orders({ cart }) {
     return (
         <>
             <title>Orders</title>
-            <Header />
+            <Header cart={cart} />
 
             <div className="orders-page">
                 <div className="page-title">Your Orders</div>
