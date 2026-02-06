@@ -3,18 +3,14 @@ import "./Home.css";
 import { Header } from "../components/Header";
 import { useEffect, useState } from "react";
 
-export default function Home() {
+export default function Home({ cart }) {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+
     useEffect(() => {
         axios.get("/api/products")
             .then((response) => {
                 setProducts(response.data);
                 //console.log(response.data);
-            })
-        axios.get("/api/cart-items")
-            .then((response) => {
-                setCart(response.data);
             })
     }, []); // Empty dependency array means this runs once on component mount
 
