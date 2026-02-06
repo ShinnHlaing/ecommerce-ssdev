@@ -1,7 +1,7 @@
 import { Link } from "react-router"
 import "./Checkout.css"
 import "./checkout-header.css"
-import { formatMoney } from "../utils/money";
+import { formatMoney } from "../../utils/money";
 
 export function Checkout({ cart }) {
     return (
