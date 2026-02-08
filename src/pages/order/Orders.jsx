@@ -65,6 +65,7 @@ export function Orders({ cart }) {
                                                     <button className="buy-again-button button-primary">
                                                         <img className="buy-again-icon" src="images/icons/buy-again.png" />
                                                         <span className="buy-again-message">Add to Cart</span>
+                                                        {/* make add to cart exercise */}
                                                     </button>
                                                 </div>
 
