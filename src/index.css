@@ -1,9 +1,10 @@
 body {
   font-family: Roboto, Arial;
-  color: rgb(33, 33, 33);
+  color: rgb(221, 207, 207);
   /* The <body> element has a default margin of 8px
      on all sides. This removes the default margins. */
   margin: 0;
+  background-color: rgb(40, 38, 38);
 }
 
 /* Remove the default margins of <p> elements. */
