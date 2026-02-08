@@ -6,7 +6,7 @@ import "./checkout-header.css"
 import { PaymentSummary } from "./PaymentSummary"
 import { OrderSummary } from "./OrderSummary";
 
-export function Checkout({ cart }) {
+export function Checkout({ cart, loadCart }) {
     const [deliveryOptions, setDeliveryOptions] = useState([]);
     const [paymentSummary, setPaymentSummary] = useState(null);
 
@@ -19,8 +19,15 @@ export function Checkout({ cart }) {
             setPaymentSummary(response.data);
         }
         fetchCheckoutData();
-    }, [])// Empty dependency array means this runs once on component mount
-
+    }, [])
+    // Empty dependency array means this runs once on component mount
+    useEffect(() => {
+        const fetchPaymentSummary = async () => {
+            let response = await axios.get("/api/payment-summary")
+            setPaymentSummary(response.data);
+        }
+        fetchPaymentSummary();
+    }, [cart])
     return (
         <>
             <title>Checkout</title>
@@ -48,7 +55,7 @@ export function Checkout({ cart }) {
                 <div className="page-title">Review your order</div>
 
                 <div className="checkout-grid">
-                    <OrderSummary deliveryOptions={deliveryOptions} cart={cart} />
+                    <OrderSummary deliveryOptions={deliveryOptions} cart={cart} loadCart={loadCart} />
                     <PaymentSummary paymentSummary={paymentSummary} />
                 </div>
             </div>
