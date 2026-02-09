@@ -6,7 +6,7 @@ import { Header } from "../../components/Header";
 import dayjs from "dayjs";
 import { formatMoney } from "../../utils/money";
 
-export function Orders({ cart }) {
+export function Orders({ cart, loadCart }) {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
@@ -49,6 +49,13 @@ export function Orders({ cart }) {
 
                                 <div className="order-details-grid">
                                     {order.products.map((orderProduct) => {
+                                        const addToCart = async () => {
+                                            await axios.post("/api/cart-items", {
+                                                productId: orderProduct.product.id,
+                                                quantity: 1
+                                            })
+                                            await loadCart();
+                                        }
                                         return (
                                             <Fragment key={orderProduct.product.id}>
                                                 <div className="product-image-container">
@@ -62,7 +69,7 @@ export function Orders({ cart }) {
                                                     <div className="product-delivery-date">Arriving on: {dayjs(orderProduct.estimatedDeliveryTimeMs).format("MMMM D")}</div>
                                                     <div className="product-quantity">Quantity: {orderProduct.quantity}
                                                     </div>
-                                                    <button className="buy-again-button button-primary">
+                                                    <button className="buy-again-button button-primary" onClick={addToCart}>
                                                         <img className="buy-again-icon" src="images/icons/buy-again.png" />
                                                         <span className="buy-again-message">Add to Cart</span>
                                                         {/* make add to cart exercise */}
