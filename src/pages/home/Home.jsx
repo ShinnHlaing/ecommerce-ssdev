@@ -2,18 +2,22 @@ import axios from "axios";
 import "./Home.css";
 import { Header } from "../../components/Header";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router";
 import { ProductsGrid } from "./ProductsGrid";
 
 export default function Home({ cart, loadCart }) {
     const [products, setProducts] = useState([]);
+    const [searchParams] = useSearchParams();
+    const search = searchParams.get("search");
 
     useEffect(() => {
         const getHomeData = async () => {
-            const response = await axios.get("/api/products")
+            const urlPath = search ? `/api/products?search=${search}` : '/api/products';
+            const response = await axios.get(urlPath);
             setProducts(response.data);
         }
         getHomeData();
-    }, []); // Empty dependency array means this runs once on component mount
+    }, [search]);
 
     return (
         <>
