@@ -8,7 +8,6 @@ vi.mock('axios');//fake axios
 
 describe('Product component', () => {
     let product;
-
     let loadCart;//create fake funciton
     beforeEach(() => {
         product = {

@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { formatMoney } from "../../utils/money";
 
+
+
 export function Product({ product, loadCart }) {
     const [quantity, setQuantity] = useState(1);
     const [showAddedMsg, setShowAddedMsg] = useState(false);
@@ -25,7 +27,7 @@ export function Product({ product, loadCart }) {
     }
 
     return (
-        <div className="product-container">
+        <div className="product-container" data-testid="product-container">
             <div className="product-image-container">
                 <img className="product-image"
                     data-testid="product-image"
